@@ -1,15 +1,10 @@
 "use client";
-import { useEffect } from "react";
 import FluidGlass from "@/components/card/fluidglass";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Projects() {
-
-
   return (
-    <section className="h-screen w-full overflow-hidden bg-black text-white flex items-center justify-center relative">
-      <div className="w-full h-full reveal-project">
+    <section className="w-full bg-black text-white overflow-hidden flex items-center justify-center px-4 sm:px-8 md:px-16 py-20 sm:py-24 lg:py-32">
+      <div className="w-full max-w-7xl h-[80vh] sm:h-[90vh] md:h-screen">
         <FluidGlass
           mode="lens"
           lensProps={{
@@ -18,7 +13,7 @@ export default function Projects() {
               { label: "About", link: "/about" },
               { label: "Projects", link: "/projects" },
             ],
-            scale: 0.2,
+            scale: 0.2, // You can tweak this per screen if needed
             ior: 1.2,
             thickness: 10,
             chromaticAberration: 0.08,
