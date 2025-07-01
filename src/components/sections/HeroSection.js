@@ -1,8 +1,8 @@
 "use client";
-import Silk from "./Silk";
-import ProfileCard from "./ProfileCard";
-import BlurText from "./Blur";
-import RotatingText from "./Rotatingtext";
+import Silk from "../animations/Silk";
+import ProfileCard from "../card/ProfileCard";
+import BlurText from "../animations/Blur";
+import RotatingText from "../animations/Rotatingtext";
 
 export default function HeroSection() {
   return (
@@ -42,19 +42,18 @@ export default function HeroSection() {
     </div>
     </ProfileCard> */}
 
-      <BlurText
-
-      text="Abhishek Singh Gaira"
-
-      delay={150}
-
-      animateBy="words"
-
-      direction="top"
-
-      className="text-8xl mb-8"
-
+      
+    <div className="flex justify-center mt-8">
+      <ProfileCard
+        avatarUrl="https://avatars.githubusercontent.com/u/000000?v=4"
+        miniAvatarUrl="https://avatars.githubusercontent.com/u/000000?v=4"
+        name="Abhishek Singh"
+        handle="abhishekgaira"
+        status="Open to Work"
+        contactText="Contact Me"
+        showUserInfo={true}
       />
+    </div>
     <div className="flex flex-row items-center justify-center gap-3 mb-4 pt-8">
       <span className="text-2xl md:text-5xl ">The</span>
       <RotatingText
