@@ -9,6 +9,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { ReactLenis } from "lenis/react";
 import Contact from "@/components/sections/contact";
+import Projects from "@/components/sections/Project"; // NOTE: Correct path
 
 export default function Home() {
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function Home() {
     <ReactLenis root>
       <ClickSpark>
         <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-white font-sans relative overflow-x-hidden">
-          {/* Squares Background */}
+          {/* 🔷 Squares Background */}
           <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
             <Squares
               speed={0.75}
@@ -49,15 +50,23 @@ export default function Home() {
           </div>
 
           <div className="relative z-10">
+            {/* 🔶 Hero Section */}
             <section className="hero reveal">
               <HeroSection />
             </section>
 
+            {/* 🔶 About + Skills */}
             <section className="main reveal">
               <AboutSkills />
               <Skills />
             </section>
 
+            {/* 🔶 Projects (NOW separate section) */}
+            <section className="projects">
+              <Projects />
+            </section>
+
+            {/* 🔶 Contact */}
             <section className="footer reveal">
               <Contact />
             </section>
