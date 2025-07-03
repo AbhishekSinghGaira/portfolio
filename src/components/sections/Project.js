@@ -1,36 +1,55 @@
 "use client";
-import FluidGlass from "@/components/card/fluidglass";
-import Squares from "@/components/animations/square";
+import { useRef } from "react";
+import FluidGlass from "../card/fluidglass";
 
 export default function Projects() {
+  const containerRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    // 🔒 Lock page scroll
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    // ✅ Allow FluidGlass scroll
+    const fluidCanvas = containerRef.current.querySelector(".fluid-glass-wrapper");
+    if (fluidCanvas) {
+      fluidCanvas.style.pointerEvents = "auto";
+    }
+  };
+
+  const handleMouseLeave = () => {
+    // 🔓 Unlock page scroll
+    document.body.style.overflow = "auto";
+    document.documentElement.style.overflow = "auto";
+
+    // ❌ Prevent FluidGlass scroll when not hovered
+    const fluidCanvas = containerRef.current.querySelector(".fluid-glass-wrapper");
+    if (fluidCanvas) {
+      fluidCanvas.style.pointerEvents = "none";
+    }
+  };
+
   return (
-    <section className="w-full bg-black text-white overflow-hidden relative flex items-center justify-center px-4 sm:px-8 md:px-16 py-20 sm:py-24 lg:py-32">
-
-      {/* 🔵 Animated Square Background */}
-      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-        <Squares
-          speed={0.75}
-          direction="diagonal"
-          borderColor="#222"
-          hoverFillColor="#232334"
-          squareSize={40}
-        />
-      </div>
-
-      {/* 🔴 3D FluidGlass Component */}
-      <div className="relative z-10 w-full max-w-7xl h-[80vh] sm:h-[90vh] md:h-screen">
+    <section
+      id="projects"
+      className="relative w-full h-screen bg-transparent overflow-hidden"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      ref={containerRef}
+    >
+      {/* ⭐️ Add this wrapper class to control pointer events */}
+      <div className="fluid-glass-wrapper pointer-events-none w-full h-full">
         <FluidGlass
-          mode="lens"
+          mode="lens" // bar or cube if you want
           lensProps={{
-            navItems: [
-              { label: "Portfolio", link: "/" },
-              { label: "About", link: "/about" },
-              { label: "Projects", link: "/projects" },
-            ],
-            scale: 0.2,
-            ior: 1.2,
-            thickness: 10,
-            chromaticAberration: 0.08,
+            chromaticAberration: 0.1,
+            thickness: 5,
+            ior: 1.15,
+            transmission: 1,
+            roughness: 0,
+            color: "#ffffff",
+            attenuationDistance: 0.25,
+            attenuationColor: "#ffffff",
           }}
         />
       </div>

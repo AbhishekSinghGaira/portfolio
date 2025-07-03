@@ -10,6 +10,7 @@ import { ScrollTrigger } from "gsap/all";
 import { ReactLenis } from "lenis/react";
 import Contact from "@/components/sections/contact";
 import Projects from "@/components/sections/Project"; // NOTE: Correct path
+import StarBorder from "@/components/animations/starborder";
 
 export default function Home() {
   useEffect(() => {
@@ -70,6 +71,16 @@ export default function Home() {
             <section className="footer reveal">
               <Contact />
             </section>
+            <StarBorder
+  as="div"
+  className="w-fit mx-auto mt-10"
+  color="cyan"
+  speed="4s"
+>
+  <h2 className="text-xl font-bold">✨ Magical Border Working</h2>
+  <p>Glow trail animations are now active! 💫</p>
+</StarBorder>
+
           </div>
         </div>
       </ClickSpark>

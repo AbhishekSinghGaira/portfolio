@@ -269,39 +269,26 @@ function Images() {
   const { height } = useThree((s) => s.viewport)
 
   useFrame(() => {
-    group.current.children[0].material.zoom = 1 + data.range(0, 1 / 3) / 3
-    group.current.children[1].material.zoom = 1 + data.range(0, 1 / 3) / 3
-    group.current.children[2].material.zoom = 1 + data.range(1.15 / 3, 1 / 3) / 2
-    group.current.children[3].material.zoom = 1 + data.range(1.15 / 3, 1 / 3) / 2
-    group.current.children[4].material.zoom = 1 + data.range(1.15 / 3, 1 / 3) / 2
-  })
+    if (!group.current) return
+    const range = data.range(0, 1 / 3) / 3
 
+    group.current.children.forEach((child) => {
+      if (child.material) {
+        child.material.zoom = 1 + range
+      }
+    })
+  })
   return (
     <group ref={group}>
       <Image
         position={[-2, 0, 0]}
         scale={[3, height / 1.1, 1]}
-        url="https://images.unsplash.com/photo-1595001354022-29103be3b73a?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      />
+        url="https://images.unsplash.com/photo-1749742756679-678e39a9b31d?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        />
       <Image
         position={[2, 0, 3]}
         scale={3}
-        url="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      />
-      <Image
-        position={[-2.05, -height, 6]}
-        scale={[1, 3, 1]}
-        url="https://images.unsplash.com/photo-1513682121497-80211f36a7d3?q=80&w=3388&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      />
-      <Image
-        position={[-0.6, -height, 9]}
-        scale={[1, 2, 1]}
-        url="https://images.unsplash.com/photo-1516205651411-aef33a44f7c2?q=80&w=2843&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      />
-      <Image
-        position={[0.75, -height, 10.5]}
-        scale={1.5}
-        url="https://images.unsplash.com/photo-1505069190533-da1c9af13346?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        url="https://images.unsplash.com/photo-1590959651373-a3db0f38a961?q=80&w=1039&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       />
     </group>
   )
